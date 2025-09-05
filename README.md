@@ -1,12 +1,17 @@
-# React + Vite
+# Pet Shop Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a **React** frontend for an online pet store. The project includes a fully responsive header and footer, navigation between pages, and a main landing page with promotional banner and call-to-action button.
 
-Currently, two official plugins are available:
+## Figma Design
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The design of this project was created in Figma:  
+[View Design](https://www.figma.com/design/8iptQGgZnHpFaKcMErrkmc/Front-end-React-project--Copy---Copy-?node-id=0-1&p=f&t=pP9odzY3mFXhCjly-0)
 
-## Expanding the ESLint configuration
+## Backend
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The backend API for this project can be found here:  
+[Pet Shop Backend](https://github.com/strexzy/Pet-Shop-Backend)
+
+## About
+
+This is an online store for pet products, where users can browse categories, view all products, check ongoing sales, and manage their basket.
