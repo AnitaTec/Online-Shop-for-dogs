@@ -1,9 +1,14 @@
+.headerWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  max-width: 1440px;
+  width: 1440px;
   height: 128px;
   flex-wrap: wrap;
 }
@@ -12,12 +17,14 @@
   width: 70px;
   height: 70px;
   margin-left: 40px;
+  flex-shrink: 0;
 }
 
 .basket {
   width: 48px;
   height: 48px;
   margin-right: 39px;
+  flex-shrink: 0;
 }
 
 nav {

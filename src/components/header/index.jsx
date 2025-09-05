@@ -12,27 +12,29 @@ const menuList = [
 
 function Header() {
   return (
-    <header className={styles.header}>
-      <NavLink to="/">
-        <img src={Logo} alt="Logo" className={styles.logo} />
-      </NavLink>
+    <div className={styles.headerWrapper}>
+      <header className={styles.header}>
+        <NavLink to="/">
+          <img src={Logo} alt="Logo" className={styles.logo} />
+        </NavLink>
 
-      <nav>
-        {menuList.map((menuItem) => (
-          <NavLink
-            key={menuItem.title}
-            to={menuItem.path}
-            className={({ isActive }) => (isActive ? styles.active : "")}
-          >
-            {menuItem.title}
-          </NavLink>
-        ))}
-      </nav>
+        <nav>
+          {menuList.map((menuItem) => (
+            <NavLink
+              key={menuItem.title}
+              to={menuItem.path}
+              className={({ isActive }) => (isActive ? styles.active : "")}
+            >
+              {menuItem.title}
+            </NavLink>
+          ))}
+        </nav>
 
-      <NavLink to="/basket">
-        <img src={Basket} alt="Basket" className={styles.basket} />
-      </NavLink>
-    </header>
+        <NavLink to="/basket">
+          <img src={Basket} alt="Basket" className={styles.basket} />
+        </NavLink>
+      </header>
+    </div>
   );
 }
 

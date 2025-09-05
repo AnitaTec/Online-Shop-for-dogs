@@ -1,31 +1,29 @@
-.main {
+.heroBlock {
   width: 100%;
-  min-height: 100vh;
+  max-width: 1440px;
+  height: 600px;
+  margin: 0 auto;
   background-image: url("../../assets/images/bannerMain.png");
   background-size: cover;
   background-position: center;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .overlay {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
-  padding: 40px;
+  justify-content: flex-start;
+  gap: 40px;
+  padding-top: 80px;
+  padding-left: 40px;
 }
 
 .title {
   font-size: 96px;
-  font-weight: 700;
+  font-weight: 600;
+  line-height: 1.1;
   color: #fff;
   margin: 0;
-}
-
-.button {
-  font-size: 20px;
-  padding: 12px 32px;
+  max-width: 1360px;
 }
