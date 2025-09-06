@@ -6,6 +6,7 @@ import Categories from "./pages/categories";
 import Products from "./pages/products";
 import Sales from "./pages/sales";
 import Basket from "./pages/basket";
+import CategoryPage from "./pages/categories";
 
 export default function App() {
   return (

@@ -1,3 +1,6 @@
+import Category from "../../components/mainComponnts/category";
+import DiscountForm from "../../components/mainComponnts/form";
+import Discounts from "../../components/mainComponnts/discount";
 import { Button } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import styles from "./main.module.css";
@@ -34,6 +37,9 @@ export default function Main() {
           </NavLink>
         </div>
       </div>
+      <Category />
+      <DiscountForm />
+      <Discounts />
     </div>
   );
 }
