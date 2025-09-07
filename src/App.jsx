@@ -6,7 +6,7 @@ import Categories from "./pages/categories";
 import Products from "./pages/products";
 import Sales from "./pages/sales";
 import Basket from "./pages/basket";
-import CategoryPage from "./pages/categories";
+import AllCategory from "./components/AllCategoryComponents";
 
 export default function App() {
   return (
@@ -15,6 +15,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/categories" element={<Categories />} />
+        <Route path="/categories/:id" element={<AllCategory />} />
+
         <Route path="/products" element={<Products />} />
         <Route path="/sales" element={<Sales />} />
         <Route path="/basket" element={<Basket />} />
