@@ -3,8 +3,6 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding-left: 40px;
-  padding-right: 40px;
   min-height: 948px;
 }
 
@@ -12,7 +10,6 @@
   width: 1360px;
   display: flex;
   flex-direction: column;
-
   max-width: 100%;
 }
 
@@ -111,8 +108,6 @@
 }
 
 .mapWrapper {
-  display: flex;
-  justify-content: center;
   width: 100%;
   margin-top: 32px;
   margin-bottom: 80px;

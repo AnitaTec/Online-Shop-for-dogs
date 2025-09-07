@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "./form.module.css";
-import { TextField, Button, Box } from "@mui/material";
 import dogsImage from "../../../assets/images/dogs.png";
 import axios from "axios";
 
@@ -45,152 +44,40 @@ export default function DiscountForm() {
         <div className={styles.left}>
           <img src={dogsImage} alt="Dogs" className={styles.image} />
         </div>
-        <Box
-          className={styles.right}
-          component="form"
-          onSubmit={handleSubmit}
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "flex-start",
-            fontFamily: "'Montserrat', sans-serif",
-          }}
-        >
-          <TextField
-            label="Name"
+        <form className={styles.right} onSubmit={handleSubmit}>
+          <input
+            className={styles.inputField}
+            type="text"
             name="name"
+            placeholder="Name"
             value={formData.name}
             onChange={handleChange}
-            error={!!errors.name}
-            helperText={errors.name}
-            sx={{
-              width: "518px",
-              mb: "16px",
-              "& .MuiOutlinedInput-root": {
-                height: "58px",
-                "& fieldset": { borderColor: "#fff" },
-                "&:hover fieldset": { borderColor: "#fff" },
-                "&.Mui-focused fieldset": { borderColor: "#fff" },
-              },
-              "& .MuiInputLabel-root": {
-                color: "#fff",
-                fontSize: "20px",
-                fontWeight: 500,
-                lineHeight: 1.3,
-                fontFamily: "'Montserrat', sans-serif",
-              },
-              "& .MuiInputLabel-root.Mui-focused": {
-                color: "#fff",
-              },
-              "& .MuiInputBase-input": {
-                color: "#fff",
-                fontSize: "20px",
-                fontWeight: 500,
-                lineHeight: 1.3,
-                height: "58px",
-                padding: 0,
-                fontFamily: "'Montserrat', sans-serif",
-              },
-            }}
           />
+          {errors.name && <div className={styles.error}>{errors.name}</div>}
 
-          <TextField
-            label="Phone number"
+          <input
+            className={styles.inputField}
+            type="number"
             name="phone"
+            placeholder="Phone number"
             value={formData.phone}
             onChange={handleChange}
-            error={!!errors.phone}
-            helperText={errors.phone}
-            sx={{
-              width: "518px",
-              mb: "16px",
-              "& .MuiOutlinedInput-root": {
-                height: "58px",
-                "& fieldset": { borderColor: "#fff" },
-                "&:hover fieldset": { borderColor: "#fff" },
-                "&.Mui-focused fieldset": { borderColor: "#fff" },
-              },
-              "& .MuiInputLabel-root": {
-                color: "#fff",
-                fontSize: "20px",
-                fontWeight: 500,
-                lineHeight: 1.3,
-                fontFamily: "'Montserrat', sans-serif",
-              },
-              "& .MuiInputLabel-root.Mui-focused": {
-                color: "#fff",
-              },
-              "& .MuiInputBase-input": {
-                color: "#fff",
-                fontSize: "20px",
-                fontWeight: 500,
-                lineHeight: 1.3,
-                height: "58px",
-                padding: 0,
-                fontFamily: "'Montserrat', sans-serif",
-              },
-            }}
           />
+          {errors.phone && <div className={styles.error}>{errors.phone}</div>}
 
-          <TextField
-            label="Email"
+          <input
+            type="email"
             name="email"
+            placeholder="Email"
             value={formData.email}
             onChange={handleChange}
-            error={!!errors.email}
-            helperText={errors.email}
-            sx={{
-              width: "518px",
-              mb: "32px",
-              "& .MuiOutlinedInput-root": {
-                height: "58px",
-                "& fieldset": { borderColor: "#fff" },
-                "&:hover fieldset": { borderColor: "#fff" },
-                "&.Mui-focused fieldset": { borderColor: "#fff" },
-              },
-              "& .MuiInputLabel-root": {
-                color: "#fff",
-                fontSize: "20px",
-                fontWeight: 500,
-                lineHeight: 1.3,
-                fontFamily: "'Montserrat', sans-serif",
-              },
-              "& .MuiInputLabel-root.Mui-focused": {
-                color: "#fff",
-              },
-              "& .MuiInputBase-input": {
-                color: "#fff",
-                fontSize: "20px",
-                fontWeight: 500,
-                lineHeight: 1.3,
-                height: "58px",
-                padding: 0,
-                fontFamily: "'Montserrat', sans-serif",
-              },
-            }}
           />
+          {errors.email && <div className={styles.error}>{errors.email}</div>}
 
-          <Button
-            type="submit"
-            sx={{
-              width: "518px",
-              height: "58px",
-              backgroundColor: "#fff",
-              color: "#000",
-              fontSize: "20px",
-              fontWeight: 600,
-              lineHeight: 1.3,
-              mb: "32px",
-              fontFamily: "'Montserrat', sans-serif",
-              "&:hover": { backgroundColor: "#fff" },
-            }}
-          >
-            Get a discount
-          </Button>
+          <button type="submit">Get a discount</button>
 
-          {success && <Box mt={2}>{success}</Box>}
-        </Box>
+          {success && <div className={styles.success}>{success}</div>}
+        </form>
       </div>
     </div>
   );
