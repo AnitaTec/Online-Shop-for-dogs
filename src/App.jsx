@@ -7,6 +7,7 @@ import Products from "./pages/products";
 import Sales from "./pages/sales";
 import Basket from "./pages/basket";
 import AllCategory from "./components/AllCategoryComponents";
+import NotFoundPage from "./pages/NotFoundPage";
 
 export default function App() {
   return (
@@ -20,7 +21,7 @@ export default function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/sales" element={<Sales />} />
         <Route path="/basket" element={<Basket />} />
-        <Route path="*" element={<h1>404 Page Not Found</h1>} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
     </>
