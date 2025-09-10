@@ -2,9 +2,13 @@ import { NavLink } from "react-router-dom";
 import { Button, Select, MenuItem } from "@mui/material";
 import { useEffect, useState, useMemo } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addToBasket } from "../../redux/slices/basketSlice";
 import styles from "./sales.module.css";
 
 export default function Sales() {
+  const dispatch = useDispatch();
+
   const [products, setProducts] = useState([]);
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
@@ -19,7 +23,7 @@ export default function Sales() {
 
   const filteredProducts = useMemo(() => {
     return products
-      .filter((p) => p.discont_price) // только товары со скидкой
+      .filter((p) => p.discont_price)
       .filter((p) => {
         const price = p.discont_price;
         if (minPrice && price < Number(minPrice)) return false;
@@ -35,6 +39,12 @@ export default function Sales() {
         return 0;
       });
   }, [products, minPrice, maxPrice, sortOption]);
+
+  const handleAddToBasket = (e, product) => {
+    e.preventDefault();
+    e.stopPropagation();
+    dispatch(addToBasket({ ...product, quantity: 1 }));
+  };
 
   return (
     <div className={styles.allCategoryWrapper}>
@@ -149,7 +159,12 @@ export default function Sales() {
                     alt={product.title}
                     className={styles.productImage}
                   />
-                  <button className={styles.addToCartBtn}>Add to Cart</button>
+                  <button
+                    className={styles.addToCartBtn}
+                    onClick={(e) => handleAddToBasket(e, product)}
+                  >
+                    Add to Cart
+                  </button>
                 </div>
                 <h4 className={styles.productTitle}>{product.title}</h4>
                 <div className={styles.priceWrapper}>

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import notFoundImage from "../../assets/images/404.png";
-import "./notFoundPage.css"; // обычный импорт CSS
+import "./notFoundPage.css";
 
 const NotFoundPage = () => {
   return (

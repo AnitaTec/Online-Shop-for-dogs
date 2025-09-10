@@ -2,9 +2,13 @@ import { NavLink } from "react-router-dom";
 import { Button, Checkbox, Select, MenuItem } from "@mui/material";
 import { useEffect, useState, useMemo } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addToBasket } from "../../redux/slices/basketSlice";
 import styles from "./products.module.css";
 
 export default function Products() {
+  const dispatch = useDispatch();
+
   const [products, setProducts] = useState([]);
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
@@ -36,6 +40,20 @@ export default function Products() {
         return 0;
       });
   }, [products, minPrice, maxPrice, discountOnly, sortOption]);
+
+  const handleAddToBasket = (e, product) => {
+    e.preventDefault();
+    e.stopPropagation();
+    dispatch(
+      addToBasket({
+        ...product,
+        image: product.image.startsWith("http")
+          ? product.image
+          : `http://localhost:3333${product.image}`,
+        quantity: 1,
+      })
+    );
+  };
 
   return (
     <div className={styles.allCategoryWrapper}>
@@ -81,7 +99,6 @@ export default function Products() {
 
       <h2 className={styles.categoriesTitle}>All Products</h2>
 
-      {/* Фильтры */}
       <div className={styles.filtersWrapper}>
         <div className={styles.filterBlock}>
           <label className={styles.filterLabel}>Price</label>
@@ -171,11 +188,20 @@ export default function Products() {
                 )}
                 <div className={styles.imageWrapper}>
                   <img
-                    src={`http://localhost:3333${product.image}`}
+                    src={
+                      product.image.startsWith("http")
+                        ? product.image
+                        : `http://localhost:3333${product.image}`
+                    }
                     alt={product.title}
                     className={styles.productImage}
                   />
-                  <button className={styles.addToCartBtn}>Add to Cart</button>
+                  <button
+                    className={styles.addToCartBtn}
+                    onClick={(e) => handleAddToBasket(e, product)}
+                  >
+                    Add to Cart
+                  </button>
                 </div>
                 <h4 className={styles.productTitle}>{product.title}</h4>
                 <div className={styles.priceWrapper}>

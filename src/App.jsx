@@ -8,6 +8,7 @@ import Sales from "./pages/sales";
 import Basket from "./pages/basket";
 import AllCategory from "./components/AllCategoryComponents";
 import NotFoundPage from "./pages/NotFoundPage";
+import ProductReview from "./components/ProductReview";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/categories/:id" element={<AllCategory />} />
 
         <Route path="/products" element={<Products />} />
+        <Route path="/products/:id" element={<ProductReview />} />
         <Route path="/sales" element={<Sales />} />
         <Route path="/basket" element={<Basket />} />
         <Route path="*" element={<NotFoundPage />} />

@@ -1,5 +1,6 @@
 import styles from "./header.module.css";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Logo from "../../assets/icons/logo.svg";
 import Basket from "../../assets/icons/basket.svg";
 
@@ -11,6 +12,9 @@ const menuList = [
 ];
 
 function Header() {
+  const basket = useSelector((state) => state.basket.items || []);
+  const totalCount = basket.reduce((acc, item) => acc + item.quantity, 0);
+
   return (
     <div className={styles.headerWrapper}>
       <header className={styles.header}>
@@ -30,8 +34,11 @@ function Header() {
           ))}
         </nav>
 
-        <NavLink to="/basket">
+        <NavLink to="/basket" className={styles.basketWrapper}>
           <img src={Basket} alt="Basket" className={styles.basket} />
+          {totalCount > 0 && (
+            <span className={styles.basketCount}>{totalCount}</span>
+          )}
         </NavLink>
       </header>
     </div>

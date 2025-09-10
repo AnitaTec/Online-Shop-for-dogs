@@ -2,10 +2,14 @@ import { NavLink, useParams } from "react-router-dom";
 import { Button, Checkbox, Select, MenuItem } from "@mui/material";
 import { useEffect, useState, useMemo } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addToBasket } from "../../redux/slices/basketSlice";
 import styles from "./allCategory.module.css";
 
 export default function AllCategory() {
   const { id } = useParams();
+  const dispatch = useDispatch();
+
   const [products, setProducts] = useState([]);
   const [categoryName, setCategoryName] = useState("");
 
@@ -43,6 +47,12 @@ export default function AllCategory() {
         return 0;
       });
   }, [products, minPrice, maxPrice, discountOnly, sortOption]);
+
+  const handleAddToBasket = (e, product) => {
+    e.preventDefault(); // предотвращает переход по NavLink
+    e.stopPropagation(); // останавливает всплытие клика
+    dispatch(addToBasket({ ...product, quantity: 1 }));
+  };
 
   return (
     <div className={styles.allCategoryWrapper}>
@@ -200,7 +210,12 @@ export default function AllCategory() {
                     alt={product.title}
                     className={styles.productImage}
                   />
-                  <button className={styles.addToCartBtn}>Add to Cart</button>
+                  <button
+                    className={styles.addToCartBtn}
+                    onClick={(e) => handleAddToBasket(e, product)}
+                  >
+                    Add to Cart
+                  </button>
                 </div>
                 <h4 className={styles.productTitle}>{product.title}</h4>
                 <div className={styles.priceWrapper}>

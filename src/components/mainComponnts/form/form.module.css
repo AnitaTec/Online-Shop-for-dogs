@@ -46,7 +46,6 @@
 
 .right {
   max-width: 516px;
-  /* height: 296px; */
   display: flex;
   flex-direction: column;
   justify-content: flex-end;

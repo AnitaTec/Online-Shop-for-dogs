@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
+import basketReducer from "./slices/basketSlice";
 
 const initialState = { value: 0 };
-
 function counterReducer(state = initialState, action) {
   switch (action.type) {
     case "increment":
@@ -14,5 +14,6 @@ function counterReducer(state = initialState, action) {
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
+    basket: basketReducer,
   },
 });
