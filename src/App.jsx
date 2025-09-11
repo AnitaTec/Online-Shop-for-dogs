@@ -10,12 +10,14 @@ import AllCategory from "./components/allCategoryComponents";
 import NotFoundPage from "./pages/NotFoundPage";
 import ProductReview from "./components/ProductReview";
 import { AppContext } from "./context/AppContext";
+import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
   const BASE_URL = "http://localhost:3333";
 
   return (
     <AppContext.Provider value={{ BASE_URL }}>
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route path="/" element={<Main />} />

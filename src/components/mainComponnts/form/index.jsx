@@ -12,11 +12,17 @@ export default function DiscountForm() {
 
   const validate = () => {
     const newErrors = {};
+
     if (!formData.name.trim()) newErrors.name = "Name is required";
+
     if (!formData.phone.trim()) newErrors.phone = "Phone is required";
+    else if (!/^\+?\d{10,15}$/.test(formData.phone))
+      newErrors.phone = "Invalid phone number (minimum 10 digits)";
+
     if (!formData.email.trim()) newErrors.email = "Email is required";
     else if (!/\S+@\S+\.\S+/.test(formData.email))
       newErrors.email = "Invalid email";
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -33,6 +39,7 @@ export default function DiscountForm() {
       await axios.post(`${BASE_URL}/sale/send`, formData);
       setSuccess("Your 5% discount coupon has been sent!");
       setFormData({ name: "", phone: "", email: "" });
+      setErrors({});
     } catch (err) {
       console.error(err);
       setSuccess("Failed to send. Please try again.");
@@ -48,31 +55,37 @@ export default function DiscountForm() {
         </div>
         <form className={styles.right} onSubmit={handleSubmit}>
           <input
+            id="name"
             className={styles.inputField}
             type="text"
             name="name"
             placeholder="Name"
             value={formData.name}
             onChange={handleChange}
+            autoComplete="name"
           />
           {errors.name && <div className={styles.error}>{errors.name}</div>}
 
           <input
+            id="phone"
             className={styles.inputField}
-            type="number"
+            type="tel"
             name="phone"
             placeholder="Phone number"
             value={formData.phone}
             onChange={handleChange}
+            autoComplete="tel"
           />
           {errors.phone && <div className={styles.error}>{errors.phone}</div>}
 
           <input
+            id="email"
             type="email"
             name="email"
             placeholder="Email"
             value={formData.email}
             onChange={handleChange}
+            autoComplete="email"
           />
           {errors.email && <div className={styles.error}>{errors.email}</div>}
 

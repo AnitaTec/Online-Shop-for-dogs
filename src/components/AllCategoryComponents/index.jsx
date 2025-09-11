@@ -26,7 +26,7 @@ export default function AllCategory() {
       .get(`${BASE_URL}/categories/${id}`)
       .then((res) => {
         setProducts(res.data.data || []);
-        setCategoryName(res.data.category.title || "");
+        setCategoryName(res.data.category?.title || "");
       })
       .catch((err) => console.error(err));
   }, [id, BASE_URL]);
@@ -121,9 +121,13 @@ export default function AllCategory() {
 
       <div className={styles.filtersWrapper}>
         <div className={styles.filterBlock}>
-          <label className={styles.filterLabel}>Price</label>
+          <label htmlFor="minPrice" className={styles.filterLabel}>
+            Price
+          </label>
           <input
             type="number"
+            id="minPrice"
+            name="minPrice"
             placeholder="from"
             className={styles.priceInput}
             value={minPrice}
@@ -131,6 +135,8 @@ export default function AllCategory() {
           />
           <input
             type="number"
+            id="maxPrice"
+            name="maxPrice"
             placeholder="to"
             className={styles.priceInput}
             value={maxPrice}
@@ -141,6 +147,8 @@ export default function AllCategory() {
         <div className={styles.filterBlock}>
           <span className={styles.filterLabel}>Discounted items</span>
           <Checkbox
+            id="discountOnly"
+            name="discountOnly"
             checked={discountOnly}
             onChange={(e) => setDiscountOnly(e.target.checked)}
             sx={{
@@ -154,8 +162,12 @@ export default function AllCategory() {
         </div>
 
         <div className={styles.filterBlock}>
-          <label className={styles.filterLabel}>Sorted</label>
+          <label htmlFor="sortOption" className={styles.filterLabel}>
+            Sorted
+          </label>
           <Select
+            id="sortOption"
+            name="sortOption"
             value={sortOption}
             onChange={(e) => setSortOption(e.target.value)}
             sx={{
