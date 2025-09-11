@@ -143,8 +143,8 @@
 
 .quantityNumber {
   font-size: 20px;
-  min-width: 98px;
-  min-height: 58px;
+  width: 98px;
+  height: 58px;
   border-top: 1px solid #7575753b;
   border-bottom: 1px solid #7575753b;
   display: flex;
@@ -178,157 +178,67 @@
   font-size: 20px;
   margin-bottom: 80px;
 }
-
 @media (max-width: 1024px) {
-  .basketItem {
-    width: 560px;
-  }
-
-  .itemImage {
-    width: 140px;
-    height: 120px;
-  }
-
-  .itemInfo {
-    width: calc(560px - 140px - 32px);
-    height: 120px;
-  }
-
-  .productTitle {
-    font-size: 18px;
-    max-width: 400px;
-  }
-
-  .discountPrice {
-    font-size: 32px;
-  }
-
-  .normalPrice {
-    font-size: 16px;
-  }
-
-  .quantityButton {
-    width: 50px;
-    height: 50px;
-    font-size: 28px;
-  }
-
-  .quantityNumber {
-    min-width: 80px;
-    min-height: 50px;
-    font-size: 18px;
-  }
-
-  .conectionLine {
-    width: 500px;
-  }
-}
-
-@media (max-width: 768px) {
-  .basketItem {
-    width: 100%;
+  .mainContent {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
-  }
-
-  .itemImage {
-    width: 100%;
-    height: auto;
-    border-radius: 12px 12px 0 0;
-  }
-
-  .itemInfo {
-    width: 100%;
-    height: auto;
-  }
-
-  .productTitle {
-    font-size: 16px;
-    text-align: center;
-  }
-
-  .discountPrice {
-    font-size: 28px;
-  }
-
-  .normalPrice {
-    font-size: 16px;
-  }
-
-  .quantityButton {
-    width: 48px;
-    height: 48px;
-    font-size: 24px;
-  }
-
-  .quantityNumber {
-    min-width: 70px;
-    min-height: 48px;
-    font-size: 16px;
-  }
-
-  .conectionLine {
-    width: 100%;
+    gap: 32px;
   }
 
   .shoppingCartHeader {
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
+    display: flex;
+    justify-content: center;
   }
 
   .pageTitle {
-    font-size: 36px;
-    text-align: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .basketItem {
-    width: 100%;
-    gap: 12px;
-  }
-
-  .itemImage {
-    width: 100%;
-    height: auto;
-  }
-
-  .itemInfo {
-    width: 100%;
-    height: auto;
-  }
-
-  .productTitle {
-    font-size: 14px;
-  }
-
-  .discountPrice {
-    font-size: 24px;
-  }
-
-  .normalPrice {
-    font-size: 14px;
-  }
-
-  .quantityButton {
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
-  }
-
-  .quantityNumber {
-    min-width: 60px;
-    min-height: 40px;
-    font-size: 14px;
-  }
-
-  .pageTitle {
-    font-size: 28px;
+    font-size: 48px;
   }
 
   .conectionLine {
+    width: 200px;
+  }
+
+  .basketItem {
+    gap: 16px;
+  }
+
+  .productTitle {
+    font-size: 22px;
+  }
+
+  .itemImage {
+    width: 150px;
+    height: 140px;
+    flex-shrink: 0;
+  }
+
+  .itemInfo {
+    width: calc(100% - 120px - 16px);
+    height: auto;
+  }
+
+  .rightSide {
     width: 100%;
+    max-width: 520px;
+  }
+
+  .quantityButton {
+    width: 38px;
+    height: 38px;
+    font-size: 25px;
+  }
+
+  .quantityNumber {
+    width: 48px;
+    height: 38px;
+    font-size: 18px;
+  }
+
+  .discountPrice {
+    font-size: 30px;
+  }
+  .normalPrice {
+    font-size: 18px;
   }
 }

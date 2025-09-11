@@ -224,3 +224,77 @@
     max-width: 316px;
   }
 }
+
+@media (max-width: 1329px) {
+  .filtersWrapper {
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .filterBlock {
+    flex: 1 1 200px;
+    gap: 12px;
+    min-width: 150px;
+  }
+
+  .filterLabel {
+    font-size: 16px;
+  }
+
+  .priceInput {
+    font-size: 14px;
+    height: 32px;
+    padding: 4px 12px;
+  }
+
+  .MuiSelect-root {
+    font-size: 14px;
+    height: 32px;
+  }
+
+  .filtersWrapper .filterBlock:nth-child(2) {
+    flex: 1 1 140px;
+  }
+
+  .filtersWrapper .filterBlock:nth-child(3) {
+    flex: 1 1 160px;
+  }
+}
+
+@media (max-width: 869px) {
+  .filtersWrapper {
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .filterBlock {
+    flex: 1 1 200px;
+    gap: 8px;
+    min-width: 120px;
+  }
+
+  .filterLabel {
+    font-size: 14px;
+  }
+
+  .priceInput {
+    font-size: 12px;
+    height: 28px;
+    padding: 2px 8px;
+  }
+
+  .MuiSelect-root {
+    font-size: 12px;
+    height: 28px;
+  }
+
+  .filtersWrapper .filterBlock:nth-child(2) {
+    flex: 1 1 120px;
+  }
+
+  .filtersWrapper .filterBlock:nth-child(3) {
+    flex: 1 1 160px;
+  }
+}
