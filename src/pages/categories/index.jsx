@@ -1,18 +1,26 @@
 import { NavLink } from "react-router-dom";
 import { Button } from "@mui/material";
 import styles from "./categories.module.css";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect, useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCategories } from "../../redux/slices/categorieSlice"; // ✅ prover' nazvanie fajla
+import { AppContext } from "../../context/AppContext";
 
 export default function Categories() {
-  const [categories, setCategories] = useState([]);
+  const dispatch = useDispatch();
+  const {
+    items: categories,
+    loading,
+    error,
+  } = useSelector((state) => state.categories);
+  const { BASE_URL } = useContext(AppContext);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3333/categories/all")
-      .then((res) => setCategories(res.data))
-      .catch((err) => console.error(err));
-  }, []);
+    dispatch(fetchCategories(BASE_URL));
+  }, [dispatch, BASE_URL]);
+
+  if (loading) return <p>Loading categories...</p>;
+  if (error) return <p>Error: {error}</p>;
 
   return (
     <div className={styles.categoriesWrapper}>
@@ -67,7 +75,7 @@ export default function Categories() {
             className={styles.categoryCard}
           >
             <img
-              src={`http://localhost:3333${cat.image}`}
+              src={`${BASE_URL}${cat.image}`}
               alt={cat.title}
               className={styles.categoryImage}
             />

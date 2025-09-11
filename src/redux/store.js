@@ -1,5 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import basketReducer from "./slices/basketSlice";
+import categoryReducer from "./slices/categorieSlice";
+import productReducer from "./slices/productSlice";
 
 const initialState = { value: 0 };
 function counterReducer(state = initialState, action) {
@@ -15,5 +17,7 @@ export const store = configureStore({
   reducer: {
     counter: counterReducer,
     basket: basketReducer,
+    categories: categoryReducer,
+    products: productReducer,
   },
 });

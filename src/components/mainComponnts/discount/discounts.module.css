@@ -108,6 +108,36 @@
   text-decoration: line-through;
 }
 
+.imageWrapper {
+  position: relative;
+}
+
+.addToCartBtn {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 284px;
+  height: 58px;
+  background-color: #0d50ff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s, background-color 0.2s;
+}
+
+.imageWrapper:hover .addToCartBtn {
+  opacity: 1;
+}
+
+.addToCartBtn:hover {
+  background-color: black;
+}
+
 @media (max-width: 1329px) {
   .salesGrid {
     grid-template-columns: repeat(2, 1fr);

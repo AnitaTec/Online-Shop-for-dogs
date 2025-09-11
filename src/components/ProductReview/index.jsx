@@ -1,14 +1,16 @@
 import { NavLink, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { Button } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { addToBasket } from "../../redux/slices/basketSlice";
 import styles from "./productReview.module.css";
+import { AppContext } from "../../context/AppContext";
 
 export default function ProductReview() {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const { BASE_URL } = useContext(AppContext);
 
   const [product, setProduct] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
@@ -19,15 +21,15 @@ export default function ProductReview() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3333/products/${id}`)
+      .get(`${BASE_URL}/products/${id}`)
       .then((res) => {
         if (!res.data.length) return;
         const prod = res.data[0];
-        prod.image = `http://localhost:3333${prod.image}`;
+        prod.image = `${BASE_URL}${prod.image}`;
         setProduct(prod);
 
         axios
-          .get("http://localhost:3333/categories/all")
+          .get(`${BASE_URL}/categories/all`)
           .then((resCat) => {
             const category = resCat.data.find((c) => c.id === prod.categoryId);
             setCategoryName(category ? category.title : "");
@@ -35,15 +37,19 @@ export default function ProductReview() {
           .catch((err) => console.error(err));
 
         axios
-          .get("http://localhost:3333/products/all")
+          .get(`${BASE_URL}/products/all`)
           .then((resRel) => {
             const filtered = resRel.data.filter((p) => p.id !== prod.id);
-            setRelatedProducts(filtered.slice(0, 3));
+            const mapped = filtered.map((p) => ({
+              ...p,
+              image: `${BASE_URL}${p.image}`,
+            }));
+            setRelatedProducts(mapped.slice(0, 3));
           })
           .catch((err) => console.error(err));
       })
       .catch((err) => console.error(err));
-  }, [id]);
+  }, [id, BASE_URL]);
 
   if (!product) return <div className={styles.spinner}>Loading...</div>;
 
@@ -147,11 +153,7 @@ export default function ProductReview() {
           <div className={styles.sideImages}>
             {relatedProducts.map((p) => (
               <NavLink key={p.id} to={`/products/${p.id}`}>
-                <img
-                  src={`http://localhost:3333${p.image}`}
-                  alt={p.title}
-                  className={styles.sideImage}
-                />
+                <img src={p.image} alt={p.title} className={styles.sideImage} />
               </NavLink>
             ))}
           </div>

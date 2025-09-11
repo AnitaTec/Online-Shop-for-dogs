@@ -1,15 +1,20 @@
 import styles from "./discounts.module.css";
 import { Button } from "@mui/material";
 import { NavLink, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
+import { AppContext } from "../../../context/AppContext";
+import { useDispatch } from "react-redux";
+import { addToBasket } from "../../../redux/slices/basketSlice";
 
 export default function Sales() {
+  const { BASE_URL } = useContext(AppContext);
   const [sales, setSales] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     axios
-      .get("http://localhost:3333/products/all")
+      .get(`${BASE_URL}/products/all`)
       .then((response) => {
         const randomSales = response.data
           .filter(
@@ -17,15 +22,27 @@ export default function Sales() {
               item.discont_price !== null && item.discont_price !== undefined
           )
           .sort(() => 0.5 - Math.random())
-          .slice(0, 4);
+          .slice(0, 4)
+          .map((item) => ({
+            ...item,
+            image: item.image.startsWith("http")
+              ? item.image
+              : `${BASE_URL}${item.image}`,
+          }));
         setSales(randomSales);
       })
       .catch((error) => console.error("Ошибка загрузки товаров:", error));
-  }, []);
+  }, [BASE_URL]);
 
   const getDiscountPercent = (price, discountPrice) => {
     if (!discountPrice) return null;
     return Math.round(((price - discountPrice) / price) * 100);
+  };
+
+  const handleAddToBasket = (e, product) => {
+    e.preventDefault();
+    e.stopPropagation();
+    dispatch(addToBasket({ ...product, quantity: 1 }));
   };
 
   return (
@@ -62,15 +79,27 @@ export default function Sales() {
             item.discont_price
           );
           return (
-            <Link key={item.id} to="/sales" className={styles.saleCard}>
+            <Link
+              key={item.id}
+              to={`/products/${item.id}`}
+              className={styles.saleCard}
+            >
               {discountPercent && (
                 <div className={styles.discountBadge}>-{discountPercent}%</div>
               )}
-              <img
-                src={`http://localhost:3333${item.image}`}
-                alt={item.title}
-                className={styles.saleImage}
-              />
+              <div className={styles.imageWrapper}>
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className={styles.saleImage}
+                />
+                <button
+                  className={styles.addToCartBtn}
+                  onClick={(e) => handleAddToBasket(e, item)}
+                >
+                  Add to Cart
+                </button>
+              </div>
               <h4 className={styles.saleTitle}>{item.title}</h4>
               <div className={styles.priceWrapper}>
                 <span className={styles.discountPrice}>

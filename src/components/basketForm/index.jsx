@@ -3,10 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { clearBasket } from "../../redux/slices/basketSlice";
 import styles from "./basketForm.module.css";
+import { useContext } from "react";
+import { AppContext } from "../../context/AppContext";
 
 export default function BasketForm({ totalPrice, totalItems, onOrderSuccess }) {
   const dispatch = useDispatch();
   const basket = useSelector((state) => state.basket.items || []);
+  const { BASE_URL } = useContext(AppContext);
 
   const {
     register,
@@ -19,7 +22,7 @@ export default function BasketForm({ totalPrice, totalItems, onOrderSuccess }) {
     if (basket.length === 0) return;
 
     try {
-      await axios.post("http://localhost:3333/order/send", {
+      await axios.post(`${BASE_URL}/order/send`, {
         customer: data,
         products: basket.map(({ id, quantity }) => ({ id, quantity })),
       });

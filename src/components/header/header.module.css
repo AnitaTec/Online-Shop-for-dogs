@@ -46,6 +46,10 @@ nav a {
   white-space: nowrap;
 }
 
+nav a.active {
+  color: #0d50ff;
+}
+
 .basketWrapper {
   position: relative;
   display: inline-block;

@@ -1,14 +1,16 @@
 import { NavLink, useParams } from "react-router-dom";
 import { Button, Checkbox, Select, MenuItem } from "@mui/material";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useContext } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addToBasket } from "../../redux/slices/basketSlice";
 import styles from "./allCategory.module.css";
+import { AppContext } from "../../context/AppContext";
 
 export default function AllCategory() {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const { BASE_URL } = useContext(AppContext);
 
   const [products, setProducts] = useState([]);
   const [categoryName, setCategoryName] = useState("");
@@ -21,13 +23,13 @@ export default function AllCategory() {
   useEffect(() => {
     if (!id) return;
     axios
-      .get(`http://localhost:3333/categories/${id}`)
+      .get(`${BASE_URL}/categories/${id}`)
       .then((res) => {
         setProducts(res.data.data || []);
         setCategoryName(res.data.category.title || "");
       })
       .catch((err) => console.error(err));
-  }, [id]);
+  }, [id, BASE_URL]);
 
   const filteredProducts = useMemo(() => {
     return products
@@ -49,8 +51,8 @@ export default function AllCategory() {
   }, [products, minPrice, maxPrice, discountOnly, sortOption]);
 
   const handleAddToBasket = (e, product) => {
-    e.preventDefault(); // предотвращает переход по NavLink
-    e.stopPropagation(); // останавливает всплытие клика
+    e.preventDefault();
+    e.stopPropagation();
     dispatch(addToBasket({ ...product, quantity: 1 }));
   };
 
@@ -206,7 +208,7 @@ export default function AllCategory() {
                 )}
                 <div className={styles.imageWrapper}>
                   <img
-                    src={`http://localhost:3333${product.image}`}
+                    src={`${BASE_URL}${product.image}`}
                     alt={product.title}
                     className={styles.productImage}
                   />

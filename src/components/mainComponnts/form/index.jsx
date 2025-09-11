@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styles from "./form.module.css";
 import dogsImage from "../../../assets/images/dogs.png";
 import axios from "axios";
+import { AppContext } from "../../../context/AppContext";
 
 export default function DiscountForm() {
+  const { BASE_URL } = useContext(AppContext);
   const [formData, setFormData] = useState({ name: "", phone: "", email: "" });
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState("");
@@ -28,7 +30,7 @@ export default function DiscountForm() {
     if (!validate()) return;
 
     try {
-      await axios.post("http://localhost:3333/sale/send", formData);
+      await axios.post(`${BASE_URL}/sale/send`, formData);
       setSuccess("Your 5% discount coupon has been sent!");
       setFormData({ name: "", phone: "", email: "" });
     } catch (err) {

@@ -1,15 +1,17 @@
 import styles from "./category.module.css";
 import { Button } from "@mui/material";
-import { NavLink, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
+import { AppContext } from "../../../context/AppContext";
 
 export default function Category() {
+  const { BASE_URL } = useContext(AppContext);
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:3333/categories/all")
+      .get(`${BASE_URL}/categories/all`)
       .then((response) => {
         const randomCategories = response.data
           .sort(() => 0.5 - Math.random())
@@ -17,7 +19,7 @@ export default function Category() {
         setCategories(randomCategories);
       })
       .catch((error) => console.error("Ошибка загрузки категорий:", error));
-  }, []);
+  }, [BASE_URL]);
 
   return (
     <div className={styles.categoriesWrapper}>
@@ -54,7 +56,7 @@ export default function Category() {
             className={styles.categoryCard}
           >
             <img
-              src={`http://localhost:3333${cat.image}`}
+              src={`${BASE_URL}${cat.image}`}
               alt={cat.title}
               className={styles.categoryImage}
             />
