@@ -117,11 +117,136 @@
   max-width: 100%;
   border-radius: 12px;
 }
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 948px;
+}
+
+.footerContainer {
+  width: 1360px;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+}
+
+.sectionTitle {
+  width: 100%;
+  font-size: 64px;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.leftBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.phoneBlock,
+.addressBlock,
+.socialsBlock,
+.workingHoursBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 32px;
+  border-radius: 12px;
+  background-color: #f5f5f5;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.1;
+  box-sizing: border-box;
+}
+
+.phoneBlock {
+  width: 780px;
+  height: 150px;
+  min-height: 150px;
+  max-width: 100%;
+}
+
+.addressBlock {
+  width: 780px;
+  height: 194px;
+  min-height: 194px;
+  max-width: 100%;
+}
+
+.socialsBlock {
+  width: 548px;
+  height: 150px;
+  min-height: 150px;
+  max-width: 100%;
+}
+
+.workingHoursBlock {
+  width: 548px;
+  height: 194px;
+  min-height: 194px;
+  max-width: 100%;
+  padding-bottom: 76px;
+}
+
+.label {
+  font-weight: 500;
+  font-size: 20px;
+  color: #666666db;
+  line-height: 1.3;
+}
+
+.social {
+  display: flex;
+  gap: 12px;
+}
+
+.social img {
+  width: 43px;
+  height: 44px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.rightBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-width: 280px;
+}
+
+.mapWrapper {
+  width: 100%;
+  margin-top: 32px;
+  margin-bottom: 80px;
+}
+
+.mapWrapper iframe {
+  max-width: 100%;
+  border-radius: 12px;
+}
+
 @media (max-width: 1329px) {
   .sectionTitle {
     font-size: 48px;
     margin-bottom: 30px;
     text-align: center;
+  }
+
+  .content {
+    justify-content: center;
   }
 }
 
@@ -135,6 +260,7 @@
   .footerContainer {
     width: 100%;
     gap: 24px;
+    align-items: center;
   }
 
   .sectionTitle {
@@ -147,6 +273,7 @@
     flex-direction: column;
     align-items: center;
     gap: 24px;
+    text-align: center;
   }
 
   .phoneBlock,
@@ -156,6 +283,7 @@
     width: 100%;
     font-size: 24px;
     padding: 24px;
+    text-align: center;
   }
 
   .social img {
@@ -166,6 +294,7 @@
   .mapWrapper {
     margin-top: 24px;
     margin-bottom: 40px;
+    text-align: center;
   }
 
   .mapWrapper iframe {
