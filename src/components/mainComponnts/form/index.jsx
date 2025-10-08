@@ -55,8 +55,8 @@ export default function DiscountForm() {
         </div>
         <form className={styles.right} onSubmit={handleSubmit}>
           <input
-            id="name"
             className={styles.inputField}
+            id="name"
             type="text"
             name="name"
             placeholder="Name"
@@ -67,8 +67,8 @@ export default function DiscountForm() {
           {errors.name && <div className={styles.error}>{errors.name}</div>}
 
           <input
-            id="phone"
             className={styles.inputField}
+            id="phone"
             type="tel"
             name="phone"
             placeholder="Phone number"
@@ -79,6 +79,7 @@ export default function DiscountForm() {
           {errors.phone && <div className={styles.error}>{errors.phone}</div>}
 
           <input
+            className={styles.inputField}
             id="email"
             type="email"
             name="email"
@@ -89,7 +90,9 @@ export default function DiscountForm() {
           />
           {errors.email && <div className={styles.error}>{errors.email}</div>}
 
-          <button type="submit">Get a discount</button>
+          <button className={styles.buttonField} type="submit">
+            Get a discount
+          </button>
 
           {success && <div className={styles.success}>{success}</div>}
         </form>

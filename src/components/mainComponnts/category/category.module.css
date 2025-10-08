@@ -109,3 +109,20 @@
     max-width: 316px;
   }
 }
+
+@media (max-width: 558px) {
+  .categoriesGrid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 10px;
+  }
+
+  .fourCategories {
+    font-size: 35px;
+  }
+
+  .categoryCard {
+    width: 100%;
+    max-width: 316px;
+  }
+}

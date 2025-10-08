@@ -182,3 +182,19 @@
     max-width: 316px;
   }
 }
+
+@media (max-width: 558px) {
+  .salesGrid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 10px;
+  }
+
+  .salesTitle {
+    font-size: 35px;
+  }
+  .saleCard {
+    width: 100%;
+    max-width: 316px;
+  }
+}
