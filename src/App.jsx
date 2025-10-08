@@ -7,7 +7,7 @@ import Products from "./pages/products";
 import Sales from "./pages/sales";
 import Basket from "./pages/basket";
 import AllCategory from "./components/allCategoryComponents";
-import NotFoundPage from "./pages/NotFoundPage";
+import NotFoundPage from "./pages/NotFoundPage/index.jsx";
 import ProductReview from "./components/ProductReview";
 import { AppContext } from "./context/AppContext";
 import ScrollToTop from "./components/ScrollToTop";
