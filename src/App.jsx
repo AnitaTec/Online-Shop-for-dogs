@@ -13,7 +13,7 @@ import { AppContext } from "./context/AppContext";
 import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
-  const BASE_URL = "http://localhost:3333";
+  const BASE_URL = "https://pet-shop-backend-myor.onrender.com";
 
   return (
     <AppContext.Provider value={{ BASE_URL }}>
