@@ -1,7 +1,7 @@
 .heroBlock {
   width: 100%;
   max-width: 1440px;
-  height: 600px;
+  height: clamp(400px, 50vh, 500px);
   margin: 0 auto;
   background-image: url("../../assets/images/bannerMain.png");
   background-size: cover;
@@ -26,4 +26,40 @@
   color: #fff;
   margin: 0;
   max-width: 1360px;
+}
+
+@media (max-width: 1000px) {
+  .heroBlock {
+    height: 350px;
+    width: 100%;
+  }
+
+  .heroBlock .overlay .title {
+    font-size: 45px;
+    line-height: 1.15;
+  }
+
+  .overlay {
+    padding-top: 2.5rem;
+    padding-left: 1.5rem;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .overlay {
+    padding-top: 2rem;
+    padding-left: 1rem;
+    gap: 1rem;
+  }
+
+  .title {
+    font-size: 35px;
+    line-height: 1.2;
+  }
+
+  .heroBlock {
+    height: 350px;
+    width: 100%;
+  }
 }
